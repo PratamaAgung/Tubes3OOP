@@ -39,6 +39,8 @@ public class View {
         }
 
         frame.addKeyListener(new PlayerController(map, x, y));
+        map[2][3].setText("?");
+        new Thread(new AnimalController(map, 3, 2)).start();
         frame.setFocusable(true);
         frame.setVisible(true);
     }
