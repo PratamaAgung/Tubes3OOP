@@ -11,8 +11,11 @@ public class View {
     private JFrame frame;
     private JTextPane[][] map;
     private JPanel panel;
+    private int x, y;
 
     public View(){
+        x = 0;
+        y = 0;
         frame = new JFrame("TryIt");
         frame.setSize(800,500);
         frame.setResizable(false);
@@ -20,7 +23,6 @@ public class View {
         frame.getContentPane().setLayout(null);
         frame.setBounds(100, 100, 1000, 750);
 
-        //frame.addKeyListener(new Controller());
         map = new JTextPane[5][5];
         for(int i = 0; i < 5; i++){
             for(int j = 0; j < 5; j++){
@@ -28,10 +30,24 @@ public class View {
                 map[i][j].setBounds(50 + i * 25, 100 + j * 25, 25, 25);
                 map[i][j].setBorder(BorderFactory.createLineBorder(Color.gray, 1));
                 map[i][j].setBackground(Color.CYAN);
+                if(i == y && j == x){
+                    map[i][j].setText("X");
+                }
+                map[i][j].setEditable(false);
                 frame.getContentPane().add(map[i][j]);
             }
         }
 
+        frame.addKeyListener(new PlayerController(map, x, y));
+        frame.setFocusable(true);
         frame.setVisible(true);
+    }
+
+    public void setX(int x){
+        this.x = x;
+    }
+
+    public void setY(int y){
+        this.y = y;
     }
 }
