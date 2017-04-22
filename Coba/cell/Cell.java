@@ -3,26 +3,36 @@ package cell;
 /**
  * Created by reiva5 on 22/04/17.
  */
-abstract class Cell {
+public abstract class Cell {
   //protected Animal animal;
   protected final char type;
   protected final int absis;
   protected final int ordinat;
   protected final int id;
+  protected boolean inCage = false;
 
   /**
-   * Constructor dengan parameter
-   * @param kar
-   * @param sumbuX
-   * @param sumbuY
-   * @param id
+   * Constructor tanpa parameter
    */
-  public Cell(char kar, int sumbuX, int sumbuY, int id) {
-    this.type = kar;
-    this.absis = sumbuX;
-    this.ordinat = sumbuX;
+  public Cell() {
+    this.type = 'F';
+    this.absis = 0;
+    this.ordinat = 0;
+    this.id = 0;
+  }
+  /**
+   * Constructor dengan parameter
+   * @param _type
+   * @param _absis
+   * @param _ordinat
+   * @param _id
+   */
+  public Cell(char _type, int _absis, int _ordinat, int _id) {
+    this.type = _type;
+    this.absis = _absis;
+    this.ordinat = _ordinat;
     //this.animal = null;
-    this.id = id;
+    this.id = _id;
   }
 
   /**

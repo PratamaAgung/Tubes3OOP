@@ -9,14 +9,13 @@ public class Door extends Cell {
 
   /**
    * Constructor dengan parameter
-   * @param kar
    * @param sumbuX
    * @param sumbuY
-   * @param lock
+   * @param id
    */
-  public Door(char kar, int sumbuX, int sumbuY, int id, boolean lock) {
-    super(kar, sumbuX, sumbuY, id);
-    locked = lock;
+  public Door(int sumbuX, int sumbuY, int id) {
+    super('D', sumbuX, sumbuY, id);
+    locked = true;
   }
 
   /**

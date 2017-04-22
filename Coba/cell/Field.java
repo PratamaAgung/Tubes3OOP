@@ -5,7 +5,8 @@ package cell;
  */
 public class Field extends Cell {
 
-  public Field(char kar, int sumbuX, int sumbuY, int id){
-    super(kar, sumbuX, sumbuY, id);
+  public Field(int sumbuX, int sumbuY, int id){
+    super('F', sumbuX, sumbuY, id);
   }
+
 }

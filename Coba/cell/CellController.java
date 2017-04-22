@@ -24,16 +24,31 @@ public class CellController extends KeyAdapter implements Runnable{
     this.y = ordinat;
   }
 
-  public void setColorAsCell(int x, int y) {
-    map[y][x].setBackground(cell);
+  /**
+   * Setter untuk mengubah warna untuk kelas Default Cell
+   * @param _absis
+   * @param _ordinat
+   */
+  public void setColorAsCell(int _absis, int _ordinat) {
+    map[_ordinat][_absis].setBackground(cell);
   }
 
-  public void setColorAsField(int x, int y) {
-    map[y][x].setBackground(field);
+  /**
+   * Setter untuk mengubah warna untuk kelas Field
+   * @param _absis
+   * @param _ordinat
+   */
+  public void setColorAsField(int _absis, int _ordinat) {
+    map[_ordinat][_absis].setBackground(field);
   }
 
-  public void setColorAsDoor(int x, int y) {
-    map[y][x].setBackground(door);
+  /**
+   * Setter untuk mengubah warna untuk kelas Door
+   * @param _absis
+   * @param _ordinat
+   */
+  public void setColorAsDoor(int _absis, int _ordinat) {
+    map[_ordinat][_absis].setBackground(door);
   }
 
   @Override
@@ -41,27 +56,27 @@ public class CellController extends KeyAdapter implements Runnable{
     int keyCode = event.getKeyCode();
     if (keyCode == 37) {
       if (y - 1 >= 0) {
-        map[y][x].setText("");
+        setColorAsDoor(x, y);
         y--;
-        map[y][x].setText("X");
+        setColorAsField(x, y);
       }
     } else if (keyCode == 39) {
       if (y + 1 < 5) {
-        map[y][x].setText("");
+        setColorAsDoor(x, y);
         y++;
-        map[y][x].setText("X");
+        setColorAsCell(x, y);
       }
     } else if (keyCode == 38) {
       if (x - 1 >= 0) {
-        map[y][x].setText("");
+        setColorAsField(x, y);
         x--;
-        map[y][x].setText("X");
+        setColorAsCell(x, y);
       }
     } else if (keyCode == 40) {
       if (x + 1 < 5) {
-        map[y][x].setText("");
+        setColorAsCell(x, y);
         x++;
-        map[y][x].setText("X");
+        setColorAsDoor(x, y);
       }
     }
   }
@@ -87,13 +102,13 @@ public class CellController extends KeyAdapter implements Runnable{
             start = start % 4 + 1;
           }
         } else if (start == 2) {
-            if (y - 1 >= 0) {
-              found = true;
-              setColorAsDoor(x, y);
-              y--;
-              setColorAsField(x, y);
-            } else {
-              start = start % 4 + 1;
+          if (y - 1 >= 0) {
+            found = true;
+            setColorAsDoor(x, y);
+            y--;
+            setColorAsField(x, y);
+          } else {
+            start = start % 4 + 1;
           }
         } else if (start == 3) {
           if (x + 1 < 5) {
