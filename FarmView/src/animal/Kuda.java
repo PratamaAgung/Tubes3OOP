@@ -8,6 +8,6 @@ import javax.swing.*;
 public class Kuda extends Animal {
     public Kuda(int id, int absis, int ordinat, String behaviour) {
         super(id, 5, absis, ordinat, behaviour);
-        icon = new ImageIcon(resizeImage("data/Kuda.png"));
+        icon =resizePicture("data/Kuda.png",25,25);
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
-import resizer.ImageResizer;
+import player.PlayerController;
+import resizer.ResizePicture;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,28 +11,35 @@ import java.awt.event.ActionListener;
 /**
  * Created by nim_13515090 on 23/04/17.
  */
-public class GameView implements ImageResizer {
+public class GameView implements ResizePicture {
+    private JFrame frame;
     public JTextPane[][] map;
     public JPanel panel;
     public JButton exit;
     public ImageIcon[] manyicon;
+    private JLabel name;
+    private JLabel score;
+    private PlayerController playercontroller;
 
     @Override
-    public Image resizeImage(String filename) {
-        ImageIcon icon = new ImageIcon(filename);
-        return icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+    public ImageIcon resizePicture(String path, int height, int width) {
+        ImageIcon picture = new ImageIcon(path);
+        Image image = picture.getImage();
+        Image resizeimage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        ImageIcon picturetemp = new ImageIcon(resizeimage);
+        return  picturetemp;
     }
 
-    public GameView(CardLayout card, JPanel mainPanel, JPanel panelTwo) {
+    public GameView(JFrame frame, CardLayout card, JPanel mainPanel, JPanel panelTwo, String nama,int isGirl) {
+        this.frame = frame;
         this.panel = panelTwo;
         manyicon = new ImageIcon[12];
-        manyicon[0] = new ImageIcon(resizeImage("data/grass.png"));
-        manyicon[1] = new ImageIcon(resizeImage("data/dirt.png"));
-        manyicon[2] = new ImageIcon(resizeImage("data/fence.jpeg"));
-        manyicon[3] = new ImageIcon(resizeImage("data/gate.jpeg"));
+        manyicon[0] = resizePicture("data/grass.png",25,25);
+        manyicon[1] = resizePicture("data/dirt.png",25,25);
+        manyicon[2] = resizePicture("data/fence.jpeg",25,25);
+        manyicon[3] = resizePicture("data/gate.jpeg",25,25);
         //manyicon[10] = new ImageIcon(resizeIcon("FarmBoy.png"));
         //manyicon[11] = new ImageIcon(resizeIcon("FarmGirl.png"));
-
 
         //Inisialisasi Map
         map = new JTextPane[20][20];
@@ -42,16 +50,24 @@ public class GameView implements ImageResizer {
                 map[i][j].setBorder(BorderFactory.createLineBorder(Color.gray, 0));
                 map[i][j].insertIcon(manyicon[0]);
                 if (i == 9 && j == 9) {
-                    map[i][j].setText("X");
+                    map[i][j].insertIcon(manyicon[1]);
                 }
                 map[i][j].setEditable(false);
                 panelTwo.add(map[i][j]);
             }
         }
+        playercontroller = new PlayerController(map,19,19, isGirl,nama);
+        frame.addKeyListener(playercontroller);
+
+        name = new JLabel("Nama Player : \n" + playercontroller.getPlayer().getName());
+        name.setBounds(600,200,200,100);
+        panel.add(name);
+
+//        score = new JLabel(te)
 
         exit = new JButton("Back to menu");
         exit.setBounds(250,650, 300,30);
-        panelTwo.add(exit);
+        panel.add(exit);
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

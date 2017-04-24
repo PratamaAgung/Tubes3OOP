@@ -9,6 +9,6 @@ public class Ayam extends Animal {
 
     public Ayam(int id, int absis, int ordinat, String behaviour) {
         super(id, 1, absis, ordinat, behaviour);
-        icon = new ImageIcon(resizeImage("data/Ayam.png"));
+        icon = resizePicture("data/Ayam.png",25,25);
     }
 }

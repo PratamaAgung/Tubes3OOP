@@ -1,13 +1,13 @@
 package animal;
 
-import resizer.ImageResizer;
+import resizer.ResizePicture;
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by nim_13515090 on 22/04/17.
  */
-public abstract class Animal implements Behaviour, ImageResizer {
+public abstract class Animal implements Behaviour, ResizePicture {
     private final int id;
     private final int idcage;
     private int absis;
@@ -67,8 +67,11 @@ public abstract class Animal implements Behaviour, ImageResizer {
     //Resize
 
     @Override
-    public Image resizeImage(String filename) {
-        ImageIcon icon = new ImageIcon(filename);
-        return icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+    public ImageIcon resizePicture(String path, int height, int width) {
+        ImageIcon picture = new ImageIcon(path);
+        Image image = picture.getImage();
+        Image resizeimage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        ImageIcon picturetemp = new ImageIcon(resizeimage);
+        return  picturetemp;
     }
 }

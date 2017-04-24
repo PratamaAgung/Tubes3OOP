@@ -1,5 +1,7 @@
 package view;
 
+import player.PlayerController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,8 @@ public class MainView {
     public JButton credit;
     public ImageIcon logo;
     public JTextPane picPane;
+    private PlayerController player;
+
     private int width, heigth;
 
     public MainView() {
@@ -36,8 +40,6 @@ public class MainView {
         mainPanel.add(panelTwo, "two");
         mainPanel.add(panelCredit, "three");
 
-        new CreditView(card, mainPanel, panelCredit);
-        new GameView(card, mainPanel, panelTwo);
 
         panelOne.setLayout(null);
         panelTwo.setLayout(null);
@@ -62,10 +64,11 @@ public class MainView {
         panelOne.add(startGame, Component.CENTER_ALIGNMENT);
         startGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String s = (String)JOptionPane.showInputDialog(frame, "What's your name?", "Let Us Know You", JOptionPane.QUESTION_MESSAGE);
-                if ((s != null) && (s.length()>0)) {
+                String nama = (String)JOptionPane.showInputDialog(frame, "What's your name?", "Let Us Know You", JOptionPane.QUESTION_MESSAGE);
+                if ((nama != null) && (nama.length() > 0)) {
                     Object[] options = {"Farm Boy", "Farm Girl"};
-                    int n = JOptionPane.showOptionDialog(frame, "Choose your character", "Let Us Know You", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    int isGirl = JOptionPane.showOptionDialog(frame, "Choose your character", "Let Us Know You", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    new GameView(frame, card, mainPanel, panelTwo,nama,isGirl);
                     card.show(mainPanel, "two");
                 } else {
                     JOptionPane.showMessageDialog(frame, "Please enter your player name to play", "Try Again", JOptionPane.WARNING_MESSAGE);
@@ -79,6 +82,7 @@ public class MainView {
         panelOne.add(credit);
         credit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                new CreditView(card, mainPanel, panelCredit);
                 card.show(mainPanel, "three");
             }
         });
