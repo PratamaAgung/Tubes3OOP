@@ -1,5 +1,9 @@
 package cell;
 
+
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Created by reiva5 on 22/04/17.
  */
@@ -9,7 +13,7 @@ public abstract class Cell {
   protected final int absis;
   protected final int ordinat;
   protected final int id;
-  protected boolean inCage = false;
+
 
   /**
    * Constructor tanpa parameter
@@ -20,6 +24,7 @@ public abstract class Cell {
     this.ordinat = 0;
     this.id = 0;
   }
+
   /**
    * Constructor dengan parameter
    * @param _type
@@ -89,4 +94,5 @@ public abstract class Cell {
   public int getId() {
     return id;
   }
+
 }
