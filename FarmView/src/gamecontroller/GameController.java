@@ -86,7 +86,10 @@ public class GameController implements Runnable {
                   animalController.getAnimalById(animal.getId()).setAbsis(x+1);
                   animalController.getAnimalById(animal.getId()).setOrdinat(y);
                 }
+                int score = playerController.getPlayer().getScore();
+                playerController.getPlayer().setScore(score+10);
                 animalController.getAnimalById(animal.getId()).setAlreadyCaught();
+                this.score.setText("<html>Score : <br>" + playerController.getPlayer().getScore() + "</html>");
                 animal = null;
             } else if (animal != null) {
               JOptionPane

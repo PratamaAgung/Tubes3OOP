@@ -33,9 +33,9 @@ public class Player implements PictureResizer {
         return avatar;
     }
 
-    public  int getAbsis() {return  absis;}
+    public int getAbsis() {return  absis;}
 
-    public  int getOrdinat() {return  ordinat;}
+    public int getOrdinat() {return  ordinat;}
 
     public String getName() {
         return name;

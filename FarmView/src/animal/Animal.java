@@ -15,7 +15,7 @@ public abstract class Animal implements Behaviour, PictureResizer {
     private boolean alreadyCaught;
     private String behaviour;
     protected ImageIcon icon;
-
+    protected ImageIcon box;
     //Ctor
     public Animal(int id, int idcage, int x, int y, String behaviour) {
         this.absis = x;
@@ -25,6 +25,7 @@ public abstract class Animal implements Behaviour, PictureResizer {
         icon = null;
         this.behaviour = new String(behaviour);
         alreadyCaught = false;
+        box = resizePicture("data/box.png", 25, 25);
     }
     public Animal(final Animal animal) {
         this.absis = animal.absis;
@@ -49,7 +50,11 @@ public abstract class Animal implements Behaviour, PictureResizer {
         return idcage;
     }
     public ImageIcon getIcon() {
-        return icon;
+        if (alreadyCaught) {
+            return icon;
+        } else {
+            return box;
+        }
     }
     public boolean isAlreadyCaught() {
         return alreadyCaught;

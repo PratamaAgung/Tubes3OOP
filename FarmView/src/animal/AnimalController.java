@@ -18,6 +18,7 @@ public class AnimalController implements Runnable, PictureResizer {
     private CellController cellController;
     private boolean[] animalstatus;
 
+
     public AnimalController(JTextPane[][] map, CellController cellController) {
         this.map = map;
         animal = new Animal[15];
@@ -59,6 +60,10 @@ public class AnimalController implements Runnable, PictureResizer {
 
     public void setAnimalstatus(int id, boolean status) {
         animalstatus[id-1] = status;
+    }
+
+    public int getNbAnimal() {
+        return nbAnimal;
     }
 
     public Animal getAnimalById(int id) {
