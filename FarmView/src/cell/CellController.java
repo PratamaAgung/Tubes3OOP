@@ -47,13 +47,30 @@ public class CellController{
       }
     }
 
-    for (int i = 5; i < width - 5; ++i) {
-      for (int j = 5; j < length - 5; ++j) {
+    for (int i = 5; i < 10; ++i) {
+      for (int j = 5; j < 10; ++j) {
         this.cell[i][j] = new Cage(j,i,1);
       }
     }
+    this.cell[5][5] = new Door(5,5,1);
+
+    for (int i = 0; i < 5; ++i) {
+      for (int j = 0; j < 5; ++j) {
+        this.cell[i][j] = new Cage(j,i,2);
+      }
+    }
+    this.cell[0][5] = new Door(5,0,2);
+
+    for (int i = width - 4; i < width; ++i) {
+      for (int j = length - 4; j < length; ++j) {
+        this.cell[i][j] = new Cage(j,i,3);
+      }
+    }
+    this.cell[width - 4][length - 3] = new Door(length - 3, width - 4, 3);
 
     createCage(1);
+    createCage(2);
+    createCage(3);
   }
 
   /**
@@ -109,7 +126,7 @@ public class CellController{
       while (!found && i < width) {
         j = 0;
         while (!found && j < length) {
-          if (cell[i][j].getId() == id) {
+          if (cell[i][j].getId() == -1 && ((Door) cell[i][j]).getCage_id() == id) {
             found = true;
           }
           else {
@@ -120,11 +137,15 @@ public class CellController{
           ++i;
         }
       }
-      Cage Start = new Cage(j,i,cell[i][j].getId());
+
+      Cage Start = new Cage(j,i,id);
+      Door pintu = new Door(j,i,id);
+
       boolean[][] visited = new boolean[width][length];
       for (i = 0; i < width; ++i) {
         for (j = 0; j < length; ++j) {
           visited[i][j] = !(cell[i][j].getId() == id);
+          setColorAsCell(j,i);
         }
       }
       Queue<Cage> Q = new ArrayDeque<Cage>();
@@ -132,7 +153,7 @@ public class CellController{
       int val = ALL;
       while (!Q.isEmpty()) {
         Cage temp = (Cage) Q.remove();
-        if (temp.getOrdinat() - 1 >= 0 && cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == id) {
+        if (temp.getOrdinat() - 1 >= 0 && (cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == id || cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == -1)) {
           val -= UP;
           if (!visited[temp.getOrdinat() - 1][temp.getAbsis()]) {
             visited[temp.getOrdinat() - 1][temp.getAbsis()] = true;
@@ -141,7 +162,7 @@ public class CellController{
           }
         }
 
-        if (temp.getOrdinat() + 1 < width && cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == id) {
+        if (temp.getOrdinat() + 1 < width && (cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == id || cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == -1)) {
           val -= DOWN;
           if (!visited[temp.getOrdinat() + 1][temp.getAbsis()]) {
             visited[temp.getOrdinat() + 1][temp.getAbsis()] = true;
@@ -149,7 +170,7 @@ public class CellController{
             Q.add(junks);
           }
         }
-        if (temp.getAbsis() - 1 >= 0 && cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == id) {
+        if (temp.getAbsis() - 1 >= 0 && (cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == id || cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == -1)) {
           val -= LEFT;
           if (!visited[temp.getOrdinat()][temp.getAbsis() - 1]) {
             visited[temp.getOrdinat()][temp.getAbsis() - 1] = true;
@@ -157,7 +178,7 @@ public class CellController{
             Q.add(junks);
           }
         }
-        if (temp.getAbsis() + 1 < length && cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == id) {
+        if (temp.getAbsis() + 1 < length && (cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == id || cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == -1)) {
           val -= RIGHT;
           if (!visited[temp.getOrdinat()][temp.getAbsis() + 1]) {
             visited[temp.getOrdinat()][temp.getAbsis() + 1] = true;
@@ -165,9 +186,10 @@ public class CellController{
             Q.add(junks);
           }
         }
-        setBorder(temp.getOrdinat(), temp.getAbsis(), val, 3);
+        setBorder(temp.getOrdinat(),temp.getAbsis(),val,3);
         val = ALL;
       }
+      setBorder(pintu.getOrdinat(),pintu.getAbsis(),0,0);
     }
     else {
       found = true;

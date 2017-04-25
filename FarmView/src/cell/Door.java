@@ -6,15 +6,17 @@ package cell;
 public class Door extends Cell {
     
   private boolean locked;
+  private int cage_id;
 
   /**
    * Constructor dengan parameter
    * @param sumbuX
    * @param sumbuY
-   * @param id
+   * @param cage_id
    */
-  public Door(int sumbuX, int sumbuY, int id) {
-    super(sumbuX, sumbuY, id);
+  public Door(int sumbuX, int sumbuY, int cage_id) {
+    super(sumbuX, sumbuY, -1);
+    this.cage_id = cage_id;
     locked = true;
   }
 
@@ -26,4 +28,11 @@ public class Door extends Cell {
     locked = false;
   }
 
+  /**
+   * Method untuk mengambil cage_id
+   * @return int cage_id
+   */
+  public int getCage_id() {
+    return this.cage_id;
+  }
 }

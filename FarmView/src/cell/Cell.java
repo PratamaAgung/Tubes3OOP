@@ -22,15 +22,15 @@ public abstract class Cell {
 
   /**
    * Constructor dengan parameter
-   * @param _absis
-   * @param _ordinat
-   * @param _id
+   * @param absis
+   * @param ordinat
+   * @param id
    */
-  public Cell(int _absis, int _ordinat, int _id) {
-    this.absis = _absis;
-    this.ordinat = _ordinat;
+  public Cell(int absis, int ordinat, int id) {
+    this.absis = absis;
+    this.ordinat = ordinat;
     //this.animal = null;
-    this.id = _id;
+    this.id = id;
   }
 
   /**
