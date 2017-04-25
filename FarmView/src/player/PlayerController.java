@@ -1,9 +1,8 @@
 package player;
 
-import resizer.ResizePicture;
+import resizer.PictureResizer;
 
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
@@ -11,7 +10,7 @@ import javax.swing.*;
 /**
  * Created by pratamaagung on 21/04/17.
  */
-public class PlayerController extends KeyAdapter implements ResizePicture {
+public class PlayerController extends KeyAdapter implements PictureResizer {
     private JTextPane [][] map;
     private Player player;
     private JLabel name;
@@ -21,42 +20,52 @@ public class PlayerController extends KeyAdapter implements ResizePicture {
         this.map = map;
         player = new Player(nama,x,y,isGirl);
         if (isGirl == 1) {
-            map[y][x].insertIcon(resizePicture("data/bebek.png", 25, 25));
+            map[y][x].setText("");
+            map[y][x].insertIcon(resizePicture("data/FarmGirl.png", 25, 25));
         } else {
-            map[y][x].insertIcon(resizePicture("data/bebek.png", 25, 25));
+            map[y][x].setText("");
+            map[y][x].insertIcon(resizePicture("data/FarmBoy.png", 25, 25));
         }
     }
 
     @Override
     public void keyPressed(KeyEvent event){
         int keyCode = event.getKeyCode();
-        ImageIcon icon = resizePicture("/home/iftitakhul/Documents/Tingkat2/Semester4/OOP/tubes/Tubes3/Tubes3OOP/bebek.png",25,25);
-        System.out.println(keyCode);
+        ImageIcon icon = resizePicture("data/Bebek.png",25,25);
+        ImageIcon grass = resizePicture("data/grass.png", 25, 25);
         int x = player.getAbsis();
         int y = player.getOrdinat();
         if (keyCode == 37) {
             if(y - 1 >= 0) {
                 map[y][x].setText("");
+                map[y][x].insertIcon(grass);
                 player.setOrdinat(y-1);
-                map[y-1][x].insertIcon(icon);
+                map[y - 1][x].setText("");
+                map[y - 1][x].insertIcon(player.getAvatar());
             }
         } else if (keyCode == 39){
             if(y + 1 < 20) {
                 map[y][x].setText("");
+                map[y][x].insertIcon(grass);
                 player.setOrdinat(y + 1);
-                map[y + 1][x].insertIcon(icon);
+                map[y + 1][x].setText("");
+                map[y + 1][x].insertIcon(player.getAvatar());
             }
         } else if (keyCode == 38){
             if(x - 1 >= 0) {
                 map[y][x].setText("");
+                map[y][x].insertIcon(grass);
                 player.setAbsis(x - 1);
-                map[y][x - 1].insertIcon(icon);
+                map[y][x - 1].setText("");
+                map[y][x - 1].insertIcon(player.getAvatar());
             }
         } else if (keyCode == 40) {
             if (x + 1 < 20) {
                 map[y][x].setText("");
+                map[y][x].insertIcon(grass);
                 player.setAbsis(x + 1);
-                map[y][x + 1].insertIcon(icon);
+                map[y][x + 1].setText("");
+                map[y][x + 1].insertIcon(player.getAvatar());
             }
         }
     }

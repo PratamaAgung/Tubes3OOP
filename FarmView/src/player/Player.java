@@ -1,6 +1,6 @@
 package player;
 
-import resizer.ResizePicture;
+import resizer.PictureResizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.*;
  */
 //import java.lang.*;
 
-public class Player implements ResizePicture {
+public class Player implements PictureResizer {
     private String name;
     private int score;
     private int absis, ordinat;
@@ -22,9 +22,9 @@ public class Player implements ResizePicture {
         this.absis = absis;
         this.ordinat = ordinat;
         if (isGirl == 1) {
-            this.avatar = resizePicture("data/bebek.png",25,25);
+            this.avatar = resizePicture("data/FarmGirl.png",25,25);
         } else   {
-            this.avatar = resizePicture("data/bebek.png",25,25);
+            this.avatar = resizePicture("data/FarmBoy.png",25,25);
         }
 
     }

@@ -1,13 +1,13 @@
 package animal;
 
-import resizer.ResizePicture;
+import resizer.PictureResizer;
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by nim_13515090 on 22/04/17.
  */
-public abstract class Animal implements Behaviour, ResizePicture {
+public abstract class Animal implements Behaviour, PictureResizer {
     private final int id;
     private final int idcage;
     private int absis;

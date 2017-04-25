@@ -1,7 +1,9 @@
 package view;
 
+import cell.CellController;
+import countdown.CountDownController;
 import player.PlayerController;
-import resizer.ResizePicture;
+import resizer.PictureResizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,15 +13,18 @@ import java.awt.event.ActionListener;
 /**
  * Created by nim_13515090 on 23/04/17.
  */
-public class GameView implements ResizePicture {
+public class GameView implements PictureResizer {
     private JFrame frame;
-    public JTextPane[][] map;
-    public JPanel panel;
-    public JButton exit;
-    public ImageIcon[] manyicon;
+    private JTextPane[][] map;
+    private JPanel panel;
+    private JButton exit;
+    private ImageIcon[] manyicon;
     private JLabel name;
     private JLabel score;
+    private JLabel timer;
     private PlayerController playercontroller;
+    private CellController cellControl;
+    private CountDownController countDown;
 
     @Override
     public ImageIcon resizePicture(String path, int height, int width) {
@@ -49,6 +54,7 @@ public class GameView implements ResizePicture {
                 map[i][j].setBounds(50 + i * 25, 100 + j * 25, 25, 25);
                 map[i][j].setBorder(BorderFactory.createLineBorder(Color.gray, 0));
                 map[i][j].insertIcon(manyicon[0]);
+                map[i][j].setBackground(Color.GREEN);
                 if (i == 9 && j == 9) {
                     map[i][j].insertIcon(manyicon[1]);
                 }
@@ -59,11 +65,21 @@ public class GameView implements ResizePicture {
         playercontroller = new PlayerController(map,19,19, isGirl,nama);
         frame.addKeyListener(playercontroller);
 
-        name = new JLabel("Nama Player : \n" + playercontroller.getPlayer().getName());
+        cellControl = new CellController(map);
+
+        name = new JLabel("<html>Nama Player : <br>" + playercontroller.getPlayer().getName() + "</html>");
         name.setBounds(600,200,200,100);
         panel.add(name);
 
-//        score = new JLabel(te)
+        score = new JLabel("<html>Score : <br>" + playercontroller.getPlayer().getScore() + "</html>");
+        score.setBounds(600,300,200,100);
+        panel.add(score);
+
+        timer = new JLabel();
+        timer.setBounds(600,400,200,100);
+        panel.add(timer);
+
+        countDown = new CountDownController(timer);
 
         exit = new JButton("Back to menu");
         exit.setBounds(250,650, 300,30);
