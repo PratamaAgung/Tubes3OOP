@@ -288,4 +288,8 @@ public class CellController{
   public Cell getCell(int absis, int ordinat) {
     return cell[ordinat][absis];
   }
+
+  public Cell[][] getCell() {
+    return cell;
+  }
 }
