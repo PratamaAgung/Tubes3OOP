@@ -6,7 +6,6 @@ import animal.*;
  */
 public abstract class Cell {
   protected Animal animal;
-  protected boolean empty = true;
   protected final int absis;
   protected final int ordinat;
   protected final int id;
@@ -85,6 +84,6 @@ public abstract class Cell {
    * @return boolean apakah kosong
    */
   public boolean isEmpty() {
-    return empty;
+    return (animal == null);
   }
 }
