@@ -12,7 +12,8 @@ import javax.swing.*;
 
 public class CountDownController extends  JPanel {
     private long startTime = -1;
-    private int durasi = 75000;
+    private long waktu;
+    private int durasi = 150000;
     private Timer timer;
     private JLabel label;
 
@@ -25,13 +26,13 @@ public class CountDownController extends  JPanel {
                     startTime = System.currentTimeMillis();
                 }
                 long now = System.currentTimeMillis();
-                long time = now - startTime;
-                if (time >= durasi) {
-                    time = durasi;
+                waktu = now - startTime;
+                if (waktu >= durasi) {
+                    waktu = durasi;
                     timer.stop();
                 }
                 SimpleDateFormat simpleform = new SimpleDateFormat("mm:ss");
-                label.setText(simpleform.format(durasi-time));
+                label.setText(simpleform.format(durasi-waktu));
             }
         });
         timer.setInitialDelay(0);
@@ -49,7 +50,12 @@ public class CountDownController extends  JPanel {
         this.timer = timer;
     }
 
-    public int getDurasi() {
-        return durasi;
+    public long getDurasi() {
+        return durasi-waktu;
+    }
+
+    public void stop() {
+      waktu = durasi;
+      timer.stop();
     }
 }
