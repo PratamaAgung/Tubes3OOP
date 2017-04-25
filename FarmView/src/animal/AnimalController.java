@@ -17,12 +17,10 @@ public class AnimalController implements Runnable, PictureResizer {
     private int nbAnimal;
     private CellController cellController;
     private boolean[] animalstatus;
-    private boolean exit;
 
 
     public AnimalController(JTextPane[][] map, CellController cellController) {
         this.map = map;
-        boolean exit = false;
         animal = new Animal[15];
         animalstatus = new boolean[15];
         rand = new Random();
@@ -85,14 +83,10 @@ public class AnimalController implements Runnable, PictureResizer {
         }
     }
 
-    public void stop() {
-        exit = true;
-    }
-
     @Override
     public void run() {
         ImageIcon grass = resizePicture("data/grass.png", 25, 25);
-        while (!exit) {
+        while (true) {
             for(int i = 0; i < nbAnimal; i++) {
                 if (animalstatus[i]) {
                     int x = animal[i].getAbsis();
