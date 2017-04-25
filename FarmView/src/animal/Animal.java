@@ -16,13 +16,13 @@ public abstract class Animal implements Behaviour, PictureResizer {
     protected ImageIcon icon;
 
     //Ctor
-    public Animal(int _id, int idcage, int x, int y, String _behaviour) {
+    public Animal(int id, int idcage, int x, int y, String behaviour) {
         this.absis = x;
         this.ordinat = y;
-        this.id = _id;
+        this.id = id;
         this.idcage = idcage;
         icon = null;
-        behaviour = new String(_behaviour);
+        this.behaviour = new String(behaviour);
     }
     public Animal(final Animal animal) {
         this.absis = animal.absis;

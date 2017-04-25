@@ -2,6 +2,7 @@ package view;
 
 import cell.CellController;
 import countdown.CountDownController;
+import gamecontroller.GameController;
 import player.PlayerController;
 import resizer.PictureResizer;
 
@@ -25,6 +26,7 @@ public class GameView implements PictureResizer {
     private PlayerController playercontroller;
     private CellController cellControl;
     private CountDownController countDown;
+    private GameController gameController;
 
     @Override
     public ImageIcon resizePicture(String path, int height, int width) {
@@ -62,10 +64,11 @@ public class GameView implements PictureResizer {
                 panelTwo.add(map[i][j]);
             }
         }
-        playercontroller = new PlayerController(map,19,19, isGirl,nama);
-        frame.addKeyListener(playercontroller);
 
         cellControl = new CellController(map);
+//        gameController = new GameController();
+        playercontroller = new PlayerController(map,9,9, isGirl,nama,cellControl);
+        frame.addKeyListener(playercontroller);
 
         name = new JLabel("<html>Nama Player : <br>" + playercontroller.getPlayer().getName() + "</html>");
         name.setBounds(600,200,200,100);

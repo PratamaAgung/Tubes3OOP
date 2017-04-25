@@ -4,7 +4,7 @@ package cell;
  * Created by reiva5 on 22/04/17.
  */
 public class Door extends Cell {
-    
+
   private boolean locked;
   private int cage_id;
 

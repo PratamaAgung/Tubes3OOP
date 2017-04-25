@@ -52,7 +52,7 @@ public class CellController{
         this.cell[i][j] = new Cage(j,i,1);
       }
     }
-    this.cell[1][5] = new Door(5,1,1);
+    this.cell[1][4] = new Door(4,1,1);
 
     for (int i = 8; i < 13; ++i) {
       for (int j = 3; j < 8; ++j) {
@@ -66,7 +66,7 @@ public class CellController{
         this.cell[i][j] = new Cage(j,i,3);
       }
     }
-    this.cell[width - 3][length - 5] = new Door(length - 5, width - 3, 3);
+    this.cell[width - 3][length - 4] = new Door(length - 4, width - 3, 3);
 
     for (int i = width - 4; i < width; ++i) {
       for (int j = 0; j < 4; ++j) {
@@ -106,68 +106,68 @@ public class CellController{
   public void setBorder(int ordinat, int absis, int location, int thick) {
     if (location == RIGHT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, DEFAULT, DEFAULT, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, DEFAULT, DEFAULT, thick, Color.BLACK));
     } else if (location == UP) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, DEFAULT, DEFAULT, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, DEFAULT, DEFAULT, DEFAULT, Color.BLACK));
     } else if (location == LEFT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, thick, DEFAULT, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, thick, DEFAULT, DEFAULT, Color.BLACK));
     } else if (location == DOWN) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, DEFAULT, thick, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, DEFAULT, thick, DEFAULT, Color.BLACK));
     } else if (location == UP + RIGHT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, DEFAULT, DEFAULT, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, DEFAULT, DEFAULT, thick, Color.BLACK));
     } else if (location == UP + DOWN) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, DEFAULT, thick, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, DEFAULT, thick, DEFAULT, Color.BLACK));
     } else if (location == UP + LEFT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, thick, DEFAULT, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, thick, DEFAULT, DEFAULT, Color.BLACK));
     } else if (location == LEFT + RIGHT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, thick, DEFAULT, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, thick, DEFAULT, thick, Color.BLACK));
     } else if (location == LEFT + DOWN) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, thick, thick, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, thick, thick, DEFAULT, Color.BLACK));
     } else if (location == RIGHT + DOWN) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, DEFAULT, thick, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, DEFAULT, thick, thick, Color.BLACK));
     } else if (location == ALL - UP) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, thick, thick, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, thick, thick, thick, Color.BLACK));
     } else if (location == ALL - LEFT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, DEFAULT, thick, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, DEFAULT, thick, thick, Color.BLACK));
     } else if (location == ALL - DOWN) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, thick, DEFAULT, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, thick, DEFAULT, thick, Color.BLACK));
     } else if (location == ALL - RIGHT) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, thick, thick, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, thick, thick, DEFAULT, Color.BLACK));
     } else if (location == ALL) {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(thick, thick, thick, thick, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(thick, thick, thick, thick, Color.BLACK));
     } else {
       map[absis][ordinat]
-          .setBorder(BorderFactory
-          .createMatteBorder(DEFAULT, DEFAULT, DEFAULT, DEFAULT, Color.BLACK));
+              .setBorder(BorderFactory
+                      .createMatteBorder(DEFAULT, DEFAULT, DEFAULT, DEFAULT, Color.BLACK));
     }
   }
 
@@ -183,7 +183,7 @@ public class CellController{
         j = 0;
         while (!found && j < length) {
           if (cell[i][j].getId() == -1
-              && ((Door) cell[i][j]).getCage_id() == id) {
+                  && ((Door) cell[i][j]).getCage_id() == id) {
             found = true;
           }
           else {
@@ -211,8 +211,8 @@ public class CellController{
       while (!Q.isEmpty()) {
         Cage temp = (Cage) Q.remove();
         if (temp.getOrdinat() - 1 >= 0
-            && (cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == id
-            || cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == -1)) {
+                && (cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == id
+                || cell[temp.getOrdinat() - 1][temp.getAbsis()].getId() == -1)) {
           val -= UP;
           if (!visited[temp.getOrdinat() - 1][temp.getAbsis()]) {
             visited[temp.getOrdinat() - 1][temp.getAbsis()] = true;
@@ -222,8 +222,8 @@ public class CellController{
         }
 
         if (temp.getOrdinat() + 1 < width
-            && (cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == id
-            || cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == -1)) {
+                && (cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == id
+                || cell[temp.getOrdinat() + 1][temp.getAbsis()].getId() == -1)) {
           val -= DOWN;
           if (!visited[temp.getOrdinat() + 1][temp.getAbsis()]) {
             visited[temp.getOrdinat() + 1][temp.getAbsis()] = true;
@@ -232,8 +232,8 @@ public class CellController{
           }
         }
         if (temp.getAbsis() - 1 >= 0
-            && (cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == id
-            || cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == -1)) {
+                && (cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == id
+                || cell[temp.getOrdinat()][temp.getAbsis() - 1].getId() == -1)) {
           val -= LEFT;
           if (!visited[temp.getOrdinat()][temp.getAbsis() - 1]) {
             visited[temp.getOrdinat()][temp.getAbsis() - 1] = true;
@@ -242,8 +242,8 @@ public class CellController{
           }
         }
         if (temp.getAbsis() + 1 < length
-            && (cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == id
-            || cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == -1)) {
+                && (cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == id
+                || cell[temp.getOrdinat()][temp.getAbsis() + 1].getId() == -1)) {
           val -= RIGHT;
           if (!visited[temp.getOrdinat()][temp.getAbsis() + 1]) {
             visited[temp.getOrdinat()][temp.getAbsis() + 1] = true;
