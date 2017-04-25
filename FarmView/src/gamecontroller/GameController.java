@@ -61,7 +61,7 @@ public class GameController implements Runnable {
           JOptionPane.showMessageDialog(frame,"GAME OVER","GAME OVER",JOptionPane.PLAIN_MESSAGE);
         }
         animalController.stop();
-        countDownController.getTimer().stop();
+        countDownController.stop();
     }
 
     public void catchAnimal() {
@@ -100,6 +100,9 @@ public class GameController implements Runnable {
                       showMessageDialog(frame, "You put animal in the right cage\nGo get another one", "Congratulation", JOptionPane.PLAIN_MESSAGE);
                 animal = null;
                 viewed = true;
+                int score = playerController.getPlayer().getScore();
+                playerController.getPlayer().setScore(score+10);
+                this.score.setText("<html>Score : <br>" + playerController.getPlayer().getScore() + "</html>");
             } else if (animal != null) {
               JOptionPane
                   .showMessageDialog(frame
