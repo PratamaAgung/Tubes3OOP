@@ -52,42 +52,42 @@ public class CellController{
         this.cell[i][j] = new Cage(j,i,1);
       }
     }
-    this.cell[0][5] = new Door(5,0,1);
+    this.cell[1][5] = new Door(5,1,1);
 
     for (int i = 8; i < 13; ++i) {
       for (int j = 3; j < 8; ++j) {
         this.cell[i][j] = new Cage(j,i,2);
       }
     }
-    this.cell[7][3] = new Door(3,8,2);
+    this.cell[8][4] = new Door(4,8,2);
 
     for (int i = width - 4; i < width; ++i) {
       for (int j = length - 4; j < length; ++j) {
         this.cell[i][j] = new Cage(j,i,3);
       }
     }
-    this.cell[width - 4][length - 3] = new Door(length - 3, width - 4, 3);
+    this.cell[width - 3][length - 5] = new Door(length - 5, width - 3, 3);
 
     for (int i = width - 4; i < width; ++i) {
       for (int j = 0; j < 4; ++j) {
         this.cell[i][j] = new Cage(j,i,4);
       }
     }
-    this.cell[width - 4][4] = new Door(4,width - 4,4);
+    this.cell[width - 4][2] = new Door(2,width - 4,4);
 
     for (int i = 0; i < 5; ++i) {
-      for (int j = width - 5; j < width; ++j) {
+      for (int j = length - 5; j < length; ++j) {
         this.cell[i][j] = new Cage(j,i,5);
       }
     }
-    this.cell[5][width - 5] = new Door(width - 5,5,5);
+    this.cell[4][length - 4] = new Door(length - 4,4,5);
 
     for (int i = 8; i < 13; ++i) {
       for (int j = width - 8; j < width - 3; ++j) {
         this.cell[i][j] = new Cage(j,i,6);
       }
     }
-    this.cell[8][width - 3] = new Door(width - 3,8,6);
+    this.cell[8][width - 5] = new Door(width - 5,8,6);
 
     createCage(1);
     createCage(2);
