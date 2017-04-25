@@ -12,6 +12,7 @@ public abstract class Animal implements Behaviour, PictureResizer {
     private final int idcage;
     private int absis;
     private int ordinat;
+    private boolean alreadyCaught;
     private String behaviour;
     protected ImageIcon icon;
 
@@ -23,6 +24,7 @@ public abstract class Animal implements Behaviour, PictureResizer {
         this.idcage = idcage;
         icon = null;
         this.behaviour = new String(behaviour);
+        alreadyCaught = false;
     }
     public Animal(final Animal animal) {
         this.absis = animal.absis;
@@ -49,6 +51,9 @@ public abstract class Animal implements Behaviour, PictureResizer {
     public ImageIcon getIcon() {
         return icon;
     }
+    public boolean isAlreadyCaught() {
+        return alreadyCaught;
+    }
 
     //Setter
     public void setAbsis(int absis) {
@@ -56,6 +61,9 @@ public abstract class Animal implements Behaviour, PictureResizer {
     }
     public void setOrdinat(int ordinat) {
         this.ordinat = ordinat;
+    }
+    public void setAlreadyCaught() {
+        this.alreadyCaught = true;
     }
 
     //Clue

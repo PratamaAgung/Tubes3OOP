@@ -1,5 +1,6 @@
 package view;
 
+import animal.AnimalController;
 import cell.CellController;
 import countdown.CountDownController;
 import gamecontroller.GameController;
@@ -17,14 +18,12 @@ import java.awt.event.ActionListener;
 public class GameView implements PictureResizer {
     private JFrame frame;
     private JTextPane[][] map;
-    private JPanel panel;
-    private JButton exit;
-    private ImageIcon[] manyicon;
     private JLabel name;
     private JLabel score;
     private JLabel timer;
-    private PlayerController playercontroller;
-    private CellController cellControl;
+    private JPanel panel;
+    private JButton exit;
+    private ImageIcon[] manyicon;
     private CountDownController countDown;
     private GameController gameController;
 
@@ -65,16 +64,11 @@ public class GameView implements PictureResizer {
             }
         }
 
-        cellControl = new CellController(map);
-//        gameController = new GameController();
-        playercontroller = new PlayerController(map,9,9, isGirl,nama,cellControl);
-        frame.addKeyListener(playercontroller);
-
-        name = new JLabel("<html>Nama Player : <br>" + playercontroller.getPlayer().getName() + "</html>");
+        name = new JLabel();
         name.setBounds(600,200,200,100);
         panel.add(name);
 
-        score = new JLabel("<html>Score : <br>" + playercontroller.getPlayer().getScore() + "</html>");
+        score = new JLabel();
         score.setBounds(600,300,200,100);
         panel.add(score);
 
@@ -83,6 +77,11 @@ public class GameView implements PictureResizer {
         panel.add(timer);
 
         countDown = new CountDownController(timer);
+
+
+        gameController = new GameController(map, frame, isGirl, nama, name, score, timer);
+        new Thread(gameController).start();
+
 
         exit = new JButton("Back to menu");
         exit.setBounds(250,650, 300,30);

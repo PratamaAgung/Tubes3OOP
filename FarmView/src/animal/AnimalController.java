@@ -1,6 +1,5 @@
 package animal;
 
-import cell.Cell;
 import cell.CellController;
 import resizer.PictureResizer;
 
@@ -22,6 +21,7 @@ public class AnimalController implements Runnable, PictureResizer {
     public AnimalController(JTextPane[][] map, CellController cellController) {
         this.map = map;
         animal = new Animal[15];
+        animalstatus = new boolean[15];
         rand = new Random();
         this.cellController = cellController;
         animal[0] = new Ayam(1, 3, 6, "Kukuruyuuk");
@@ -57,8 +57,8 @@ public class AnimalController implements Runnable, PictureResizer {
         return animalstatus;
     }
 
-    public void setAnimalstatus(int id) {
-        animalstatus[id-1] = false;
+    public void setAnimalstatus(int id, boolean status) {
+        animalstatus[id-1] = status;
     }
 
     public Animal getAnimalById(int id) {
@@ -90,7 +90,9 @@ public class AnimalController implements Runnable, PictureResizer {
                     boolean found = false;
                     while (!found) {
                         if (start == 1) {
-                            if (x - 1 >= 0 && (cellController.getCell(x-1, y).getId() == 0 || cellController.getCell(x-1, y).getId() == animal[i].getIdcage())) {
+                            if (x - 1 >= 0
+                                  && ((!animal[i].isAlreadyCaught() && cellController.getCell(x-1, y).getId() == 0)
+                                  || (animal[i].isAlreadyCaught() && cellController.getCell(x-1, y).getId() == animal[i].getIdcage()))) {
                                 found = true;
                                 map[x][y].setText("");
                                 map[x][y].insertIcon(grass);
@@ -103,7 +105,9 @@ public class AnimalController implements Runnable, PictureResizer {
                                 start = start % 4 + 1;
                             }
                         } else if (start == 2) {
-                            if (y - 1 >= 0 && (cellController.getCell(x, y-1).getId() == 0 || cellController.getCell(x, y-1).getId() == animal[i].getIdcage())) {
+                            if (y - 1 >= 0
+                                  && ((!animal[i].isAlreadyCaught() && cellController.getCell(x, y-1).getId() == 0)
+                                  || (animal[i].isAlreadyCaught() && cellController.getCell(x, y-1).getId() == animal[i].getIdcage()))) {
                                 found = true;
                                 map[x][y].setText("");
                                 map[x][y].insertIcon(grass);
@@ -116,7 +120,9 @@ public class AnimalController implements Runnable, PictureResizer {
                                 start = start % 4 + 1;
                             }
                         } else if (start == 3) {
-                            if (x + 1 < 20 && (cellController.getCell(x+1, y).getId() == 0 || cellController.getCell(x+1, y).getId() == animal[i].getIdcage())) {
+                            if (x + 1 < 20
+                                  && ((!animal[i].isAlreadyCaught() && cellController.getCell(x+1, y).getId() == 0)
+                                  || (animal[i].isAlreadyCaught() && cellController.getCell(x+1, y).getId() == animal[i].getIdcage()))) {
                                 found = true;
                                 map[x][y].setText("");
                                 map[x][y].insertIcon(grass);
@@ -130,7 +136,9 @@ public class AnimalController implements Runnable, PictureResizer {
                             }
                         } else if (start == 4) {
                             //System.out.println(x + " " + y + " " + farm[x][y+1].getId());
-                            if ((y + 1 < 20 ) && (cellController.getCell(x, y+1).getId() == 0 || cellController.getCell(x, y + 1).getId() == animal[i].getIdcage())) {
+                            if ((y + 1 < 20 )
+                                  && ((!animal[i].isAlreadyCaught() && cellController.getCell(x, y+1).getId() == 0)
+                                  || (animal[i].isAlreadyCaught() && cellController.getCell(x, y + 1).getId() == animal[i].getIdcage()))) {
                                 found = true;
                                 map[x][y].setText("");
                                 map[x][y].insertIcon(grass);
