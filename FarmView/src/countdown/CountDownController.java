@@ -49,4 +49,7 @@ public class CountDownController extends  JPanel {
         this.timer = timer;
     }
 
+    public int getDurasi() {
+        return durasi;
+    }
 }

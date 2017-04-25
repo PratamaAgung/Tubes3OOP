@@ -52,7 +52,6 @@ public class GameController implements Runnable {
             catchAnimal();
             releaseAnimal();
             allCaught = (nbAnimal == 0);
-            System.out.println(nbAnimal);
             timeOver = (countDownController.getDurasi() <= 0);
         }
         if (allCaught) {
@@ -61,7 +60,7 @@ public class GameController implements Runnable {
         else {
           JOptionPane.showMessageDialog(frame,"GAME OVER","GAME OVER",JOptionPane.PLAIN_MESSAGE);
         }
-        animalThread.interrupt();
+        animalController.stop();
         countDownController.getTimer().stop();
     }
 
@@ -97,6 +96,8 @@ public class GameController implements Runnable {
                 }
                 animalController.getAnimalById(animal.getId()).setAlreadyCaught();
                 --nbAnimal;
+                JOptionPane.
+                      showMessageDialog(frame, "You put animal in the right cage\nGo get another one", "Congratulation", JOptionPane.PLAIN_MESSAGE);
                 animal = null;
                 viewed = true;
             } else if (animal != null) {
