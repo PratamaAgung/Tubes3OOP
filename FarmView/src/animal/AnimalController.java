@@ -39,7 +39,7 @@ public class AnimalController implements Runnable, PictureResizer {
         animal[14] = new Sapi(15, 8, 8, "Moo");
         nbAnimal = 15;
         for (int i = 0; i < nbAnimal; i++) {
-            map[animal[i].getOrdinat()][animal[i].getAbsis()].insertIcon(animal[i].getIcon());
+            map[animal[i].getAbsis()][animal[i].getOrdinat()].insertIcon(animal[i].getIcon());
         }
     }
 
@@ -76,38 +76,38 @@ public class AnimalController implements Runnable, PictureResizer {
                 boolean found = false;
                 while (!found) {
                     if (start == 1) {
-                        if (x - 1 >= 0 && farm[y][x-1].getId() == 0) {
+                        if (x - 1 >= 0 && farm[x-1][y].getId() == 0) {
                             found = true;
-                            map[y][x].insertIcon(grass);
+                            map[x][y].insertIcon(grass);
                             x--;
-                            map[y][x].insertIcon(animal[i].getIcon());
+                            map[x][y].insertIcon(animal[i].getIcon());
                         } else {
                             start = start % 4 + 1;
                         }
                     } else if (start == 2) {
-                        if (y - 1 >= 0 && farm[y-1][x].getId() == 0) {
+                        if (y - 1 >= 0 && farm[x][y-1].getId() == 0) {
                             found = true;
-                            map[y][x].insertIcon(grass);
+                            map[x][y].insertIcon(grass);
                             y--;
-                            map[y][x].insertIcon(animal[i].getIcon());
+                            map[x][y].insertIcon(animal[i].getIcon());
                         } else {
                             start = start % 4 + 1;
                         }
                     } else if (start == 3) {
-                        if (x + 1 < 20 && farm[y][x+1].getId() == 0) {
+                        if (x + 1 < 20 && farm[x+1][y].getId() == 0) {
                             found = true;
-                            map[y][x].insertIcon(grass);
+                            map[x][y].insertIcon(grass);
                             x++;
-                            map[y][x].insertIcon(animal[i].getIcon());
+                            map[x][y].insertIcon(animal[i].getIcon());
                         } else {
                             start = start % 4 + 1;
                         }
                     } else if (start == 4) {
-                        if (y + 1 < 20 && farm[y+1][x].getId() == 0) {
+                        if (y + 1 < 20 && farm[x][y+1].getId() == 0) {
                             found = true;
-                            map[y][x].insertIcon(grass);
+                            map[x][y].insertIcon(grass);
                             y++;
-                            map[y][x].insertIcon(animal[i].getIcon());
+                            map[x][y].insertIcon(animal[i].getIcon());
                         } else {
                             start = start % 4 + 1;
                         }
