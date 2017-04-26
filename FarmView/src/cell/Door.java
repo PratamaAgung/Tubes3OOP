@@ -1,7 +1,8 @@
 package cell;
 
 /**
- * Created by reiva5 on 22/04/17.
+ * Kelas untuk Door turunan dari Cell.
+ * @author Jehian Norman Saviero.
  */
 public class Door extends Cell {
 

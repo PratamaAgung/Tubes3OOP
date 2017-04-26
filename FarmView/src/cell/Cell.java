@@ -3,7 +3,8 @@ package cell;
 import animal.Animal;
 
 /**
- * Created by reiva5 on 22/04/17.
+ * Kelas abstract untuk Cell.
+ * @author Jehian Norman Saviero.
  */
 public abstract class Cell {
   protected Animal animal;

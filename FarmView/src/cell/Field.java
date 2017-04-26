@@ -1,7 +1,8 @@
 package cell;
 
 /**
- * Created by reiva5 on 24/04/17.
+ * Kelas untuk Field turunan dari Cell.
+ * @author Jehian Norman Saviero.
  */
 public class Field extends Cell {
 

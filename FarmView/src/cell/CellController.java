@@ -8,7 +8,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JTextPane;
 
 /**
- * Created by reiva5 on 22/04/17.
+ * Kelas untuk mengatur Cell.
+ * @author Jehian Norman Saviero.
  */
 public class CellController {
   private Cell[][] cell;

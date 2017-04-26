@@ -1,7 +1,8 @@
 package cell;
 
 /**
- * Created by reiva5 on 24/04/17.
+ * Kelas untuk Cage turunan dari Cell.
+ * @author Jehian Norman Saviero.
  */
 public class Cage extends Cell {
 
