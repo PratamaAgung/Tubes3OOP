@@ -1,7 +1,8 @@
 package animal;
 
 /**
- * Created by nim_13515090 on 23/04/17.
+ * Kelas Domba representasi hewan domba.
+ * @author Annisa Muzdalifa.
  */
 public class Domba extends Animal {
 

@@ -1,7 +1,8 @@
 package animal;
 
 /**
- * Created by nim_13515090 on 23/04/17.
+ * Kelas Kuda representasi hewan kuda.
+ * @author Annisa Muzdalifa.
  */
 public class Kuda extends Animal {
   public Kuda(int id, int absis, int ordinat, String behaviour) {

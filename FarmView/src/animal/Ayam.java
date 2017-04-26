@@ -1,7 +1,8 @@
 package animal;
 
 /**
- * Created by nim_13515090 on 23/04/17.
+ * Kelas Ayam representasi hewan ayam.
+ * @author Annisa Muzdalifa.
  */
 public class Ayam extends Animal {
 

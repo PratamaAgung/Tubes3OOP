@@ -1,7 +1,8 @@
 package animal;
 
 /**
- * Created by nim_13515090 on 23/04/17.
+ * Kelas Kelinci representasi hewan kelinci.
+ * @author Annisa Muzdalifa.
  */
 public class Kelinci extends Animal {
   public Kelinci(int id, int absis, int ordinat, String behaviour) {

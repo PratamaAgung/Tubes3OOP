@@ -1,7 +1,8 @@
 package animal;
 
 /**
- * Created by nim_13515090 on 23/04/17.
+ * Kelas Bebek representasi hewan bebek.
+ * @author Annisa Muzdalifa.
  */
 public class Bebek extends Animal {
   public Bebek(int id, int absis, int ordinat, String behaviour) {
