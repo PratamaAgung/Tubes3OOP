@@ -1,10 +1,11 @@
 package countdown;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  * Kelas untuk mengatur timer.
@@ -27,6 +28,7 @@ public class CountDownController extends  JPanel {
   public CountDownController(JLabel label) {
     this.label = label;
     timer = new Timer(0, new ActionListener() {
+
       /**
        * Method untuk memberikan listener terhadap timer.
        * I.S : -.
@@ -45,11 +47,11 @@ public class CountDownController extends  JPanel {
           timer.stop();
         }
         SimpleDateFormat simpleform = new SimpleDateFormat("mm:ss");
-        label.setText(simpleform.format(durasi-waktu));
+        label.setText(simpleform.format(durasi - waktu));
       }
     });
     timer.setInitialDelay(0);
-    if(!timer.isRunning()) {
+    if (!timer.isRunning()) {
       startTime = -1;
       timer.start();
     }
@@ -77,10 +79,10 @@ public class CountDownController extends  JPanel {
   /**
    * Getter untuk mengambil durasi yang masih ada.
    * I.S : -.
-   * @returnn durasi yang masih tersedia.
+   * @return durasi yang masih tersedia.
    */
   public long getDurasi() {
-    return durasi-waktu;
+    return durasi - waktu;
   }
 
   /**
