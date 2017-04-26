@@ -60,7 +60,7 @@ public class GameController implements Runnable {
         else {
           JOptionPane.showMessageDialog(frame,"GAME OVER","GAME OVER",JOptionPane.PLAIN_MESSAGE);
         }
-        animalController.stop();
+        //animalController.stop();
         countDownController.stop();
     }
 
