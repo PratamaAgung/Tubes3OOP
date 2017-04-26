@@ -1,6 +1,7 @@
 package cell;
 
-import animal.*;
+import animal.Animal;
+
 /**
  * Created by reiva5 on 22/04/17.
  */
@@ -11,7 +12,7 @@ public abstract class Cell {
   protected final int id;
 
   /**
-   * Constructor tanpa parameter
+   * Constructor tanpa parameter.
    */
   public Cell() {
     this.absis = 0;
@@ -20,10 +21,10 @@ public abstract class Cell {
   }
 
   /**
-   * Constructor dengan parameter
-   * @param absis
-   * @param ordinat
-   * @param id
+   * Constructor dengan parameter.
+   * @param absis merupakan posisi absis dari Cell.
+   * @param ordinat merupakan posisi ordinat dari Cell.
+   * @param id merupakan nomor id dari Cell.
    */
   public Cell(int absis, int ordinat, int id) {
     this.absis = absis;
@@ -72,16 +73,16 @@ public abstract class Cell {
   }
 
   /**
-   * Getter id dari cell
-   * @return id dari cell
+   * Getter id dari cell.
+   * @return id dari cell.
    */
   public int getId() {
     return id;
   }
 
   /**
-   * Method untuk mengecek apakah cell kosong
-   * @return boolean apakah kosong
+   * Method untuk mengecek apakah cell kosong.
+   * @return boolean apakah kosong.
    */
   public boolean isEmpty() {
     return (animal == null);
